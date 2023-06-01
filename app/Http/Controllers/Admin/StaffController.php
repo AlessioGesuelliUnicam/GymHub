@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-
+use App\Models\Role;
 use App\Models\Staff;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -28,7 +28,10 @@ class StaffController extends Controller
      */
     public function create()
     {
-        return view('staff.d-create.create');
+        $roles = Role::all();
+        $data = [
+            "roles" => $roles];
+        return view('staff.d-create.create', $data);
     }
 
     /**

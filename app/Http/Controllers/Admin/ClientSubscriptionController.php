@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\ClientSubscription;
 use App\Http\Controllers\Controller;
-use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClientSubscriptionController extends Controller
 {
@@ -14,10 +14,11 @@ class ClientSubscriptionController extends Controller
      */
     public function index()
     {
-        $clientSubscriptions = ClientSubscription::all();
+        $clientSubscriptions =ClientSubscription::all();
+        $client = DB::table('client')->where('id','=', $clientSubscriptions)->get();
 
         $data = [
-            "clientSubscriptions"=> $clientSubscriptions];
+            "clientSubscriptions" => $clientSubscriptions];
 
         return view('clientSubscriptions.d-index.index', $data);
     }

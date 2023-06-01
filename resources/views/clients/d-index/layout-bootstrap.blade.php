@@ -25,7 +25,7 @@
 
 <header>
     <nav class="navbar navbar-default">
-        <div class="container" style="margin-left: 0">
+        <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -48,7 +48,7 @@
     </nav>
 </header>
 
-<main class="container" style="margin-left: 0">
+<main class="container">
 
     @yield('content')
 

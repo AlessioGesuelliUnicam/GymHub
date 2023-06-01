@@ -16,7 +16,7 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>ID</th>
+        <th style="display: none">ID</th>
         <th>Nome</th>
         <th>Cognome</th>
         <th>Data di nascita</th>
@@ -36,7 +36,7 @@
     <tbody>
     @foreach($clients as $client)
     <tr>
-        <td>{{$client -> id}}</td>
+        <td style="display: none">{{$client -> id}}</td>
         <td>{{$client -> name}}</td>
         <td>{{$client -> surname}}</td>
         <td>{{$client -> birth_date}}</td>
@@ -53,11 +53,12 @@
         </td>
 
         <td>
-            <form method='POST' action="{{ route('clients.destroy', ['client' => $client->id]) }}"></form>
+            <form method='POST' action="{{ route('clients.destroy', ['client' => $client->id]) }}">
                 @csrf
                 @method('DELETE')
 
                 <input class="btn btn-danger" type="submit" value="Elimina">
+            </form>
         </td>
     </tr>
 

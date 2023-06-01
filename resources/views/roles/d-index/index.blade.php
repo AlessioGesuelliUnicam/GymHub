@@ -34,11 +34,12 @@
         </td>
 
         <td>
-            <form method='POST' action="{{ route('roles.destroy', ['role' => $role->id]) }}"></form>
+            <form method='POST' action="{{ route('roles.destroy', ['role' => $role->id]) }}">
                 @csrf
                 @method('DELETE')
 
                 <input class="btn btn-danger" type="submit" value="Elimina">
+            </form>
         </td>
     </tr>
 
