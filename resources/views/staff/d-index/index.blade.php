@@ -1,6 +1,6 @@
 @extends('staff.d-index.layout-bootstrap')
 @section('content')
-@if(count($staffs) == 0)
+@if(count($staff) == 0)
 
 <h1 class = "text-center">Non ci sono dati.</h1>
 
@@ -21,16 +21,16 @@
     </thead>
 
     <tbody>
-    @foreach($staffs as $staff)
+    @foreach($staff as $index => $staffMember)
     <tr>
-        <th>{{$staff -> name}}</th>
-        <th>{{$staff -> surname}}</th>
-        <th>{{$staff -> birth_date}}</th>
-        <th>{{$staff -> city_residence}}</th>
-        <th>{{$staff -> address_residence}}</th>
-        <th>{{$staff -> phone_number}}</th>
-        <th>{{$staff -> email}}</th>
-        <th>{{$staff -> id_role}}</th>
+        <td>{{$staffMember -> name}}</td>
+        <td>{{$staffMember -> surname}}</td>
+        <td>{{$staffMember -> birth_date}}</td>
+        <td>{{$staffMember -> city_residence}}</td>
+        <td>{{$staffMember -> address_residence}}</td>
+        <td>{{$staffMember -> phone_number}}</td>
+        <td>{{$staffMember -> email}}</td>
+        <td>{{$roles[$index]}}</td>
     </tr>
 
     @endforeach

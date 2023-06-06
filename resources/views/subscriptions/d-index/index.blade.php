@@ -17,8 +17,14 @@
     <tbody>
     @foreach($subscriptions as $subscription)
     <tr>
-        <th>{{$subscription -> duration}}</th>
-        <th>{{$subscription -> price}}</th>
+        <th>
+            @if($subscription->duration > 1)
+            {{ $subscription->duration . " MESI" }}
+            @else
+            {{ $subscription->duration . " MESE" }}
+            @endif
+        </th>
+        <th>{{$subscription -> price . "€"}}</th>
     </tr>
 
     @endforeach

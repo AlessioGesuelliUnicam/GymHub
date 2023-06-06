@@ -14,13 +14,28 @@ class ClientSubscriptionController extends Controller
      */
     public function index()
     {
-        $clientSubscriptions =ClientSubscription::all();
-        $client = DB::table('client')->where('id','=', $clientSubscriptions)->get();
+        $clientSubscriptions = ClientSubscription::all();
 
         $data = [
-            "clientSubscriptions" => $clientSubscriptions];
+            "clientSubscriptions" => $clientSubscriptions,
+            "clients" => []
+        ];
 
-        return view('clientSubscriptions.d-index.index', $data);
+        foreach ($clientSubscriptions as $clientSubscriptionRow) {
+            $clients = DB::table('clients')
+                ->where('id', $clientSubscriptionRow->client_id)
+                ->select('name', 'surname')
+                ->get();
+
+            foreach ($clients as $client) {
+                $data['clients'][] = [
+                    'name' => $client->name,
+                    'surname' => $client->surname,
+                ];
+            }
+        }
+
+        return view('clientSubscriptions.d-index.index', compact('data', 'clientSubscriptions'));
     }
 
     /**

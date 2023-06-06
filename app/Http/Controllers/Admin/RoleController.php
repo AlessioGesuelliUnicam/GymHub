@@ -18,7 +18,7 @@ class RoleController extends Controller
         $roles = Role::all();
 
         $data = [
-            "roles"=> $roles];
+            "roles" => $roles];
 
         return view('roles.d-index.index', $data);
     }
@@ -89,12 +89,14 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        if(Staff::where($role->id,'id_role')){
+        if (Staff::where($role->id, 'id_role')) {
             return redirect()->route('roles.index')->with('Fallimento', 'Ruolo impossibile da eliminare, modificare ruolo dei componenti dello staff');
-        }else{
+        } else {
             $role->delete();
             return redirect()->route('roles.index')->with('Successo', 'Ruolo eliminato con successo');
         }
 
     }
+
+
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Role;
 use App\Models\Staff;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StaffController extends Controller
 {
@@ -14,11 +14,18 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $staffs = Staff::all();
+        $staff = Staff::all();
 
         $data = [
-            "staffs"=> $staffs
+            "staff" => $staff,
+            "roles" => []
         ];
+
+        foreach ($staff as $staffMember) {
+            $role = DB::table('roles')->where('id', $staffMember->id_role)->value('type');
+            $data['roles'][] = $role;
+        }
+
 
         return view('staff.d-index.index', $data);
     }
@@ -28,7 +35,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
+        $roles = DB::table('roles')->get();
         $data = [
             "roles" => $roles];
         return view('staff.d-create.create', $data);
