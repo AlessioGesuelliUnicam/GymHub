@@ -28,4 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('clients','App\Http\Controllers\Admin\ClientController');
+Route::resource('subscriptions','App\Http\Controllers\Admin\SubscriptionController');
+Route::resource('diets','App\Http\Controllers\Admin\DietController');
+Route::resource('trainingSheets','App\Http\Controllers\Admin\TrainingSheetController');
+Route::resource('roles','App\Http\Controllers\Admin\RoleController');
+Route::resource('clientSubscriptions','App\Http\Controllers\Admin\ClientSubscriptionController');
+Route::resource('staff','App\Http\Controllers\Admin\StaffController');
+
 require __DIR__.'/auth.php';
