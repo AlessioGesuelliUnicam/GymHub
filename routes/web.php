@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::resource('clients','App\Http\Controllers\Admin\ClientController');
-Route::resource('subscriptions','App\Http\Controllers\Admin\SubscriptionController');
-Route::resource('diets','App\Http\Controllers\Admin\DietController');
-Route::resource('trainingSheets','App\Http\Controllers\Admin\TrainingSheetController');
-Route::resource('roles','App\Http\Controllers\Admin\RoleController');
-Route::resource('clientSubscriptions','App\Http\Controllers\Admin\ClientSubscriptionController');
-Route::resource('staff','App\Http\Controllers\Admin\StaffController');
+require __DIR__.'/auth.php';
