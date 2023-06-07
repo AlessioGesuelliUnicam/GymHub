@@ -17,7 +17,7 @@
 <body class="font-sans antialiased">
 @include('layouts.navigation')
 
-<div class="min-h-screen bg-white">
+<div class="min-h-screen bg-white" style="height: 100vh;">
 
 
     <!-- Page Heading -->
@@ -28,7 +28,7 @@
         </div>
     </header>
     @endif
-    <div class="flex">
+    <div class="flex bg-gray-50" style="height: 100vh;">
         @include('components.sidebar')
         <!-- Page Content -->
         <main>

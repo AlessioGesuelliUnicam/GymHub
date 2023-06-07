@@ -14,16 +14,18 @@
 <a style="color: white;" href="{{route('clients.create')}}">Nuovo cliente</a>
 @else
 <div class="flex flex-col">
-
-    <div class="overflow-x-auto sm:rounded-lg">
-        <div class="inline-block>
+    <h2 class="font-semibold  text-xl p-6 bg-gray-50 dark:bg-gray-800 font-semibold  text-white ">
+        {{ __('Clienti') }}
+    </h2>
+    <div class="overflow-x-auto sm:rounded-lg p-4">
+        <div class="inline-block">
             <div class="overflow-hidden shadow-md">
                 <table class="w-auto  text-center text-sm font-light ">
                     <thead
                         class="bg-gray-50 dark:bg-gray-800">
                     <tr>
                         <th scope="col" class="hidden">ID</th>
-                        <th scope="col" class="  text-white">Nome</th>
+                        <th scope="col" class="p-6  text-white">Nome</th>
                         <th scope="col" class="  text-white">Cognome</th>
                         <th scope="col" class="  text-white">Data di nascita</th>
                         <th scope="col" class="  text-white">Città</th>
@@ -74,9 +76,11 @@
         </div>
     </div>
 </div>
-<button class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500">
-    <a href="{{route('clients.create')}}">Nuovo cliente</a>
-</button>
+<div class="p-2 right-0 absolute">
+    <button class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500">
+        <a href="{{route('clients.create')}}">Nuovo cliente</a>
+    </button>
+</div>
 
 @endif
 @endsection
