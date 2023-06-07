@@ -10,7 +10,7 @@ use App\Models\TrainingSheet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class  ClientController extends Controller
 {
     /**
      * Display a listing of the resource.

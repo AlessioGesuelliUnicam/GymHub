@@ -22,6 +22,18 @@
         <td>{{ $client['surname'] }}</td>
         <td>{{ $data['clientSubscriptions'][$key]->start_subscription }}</td>
         <td>{{ $data['clientSubscriptions'][$key]->end_subscription }}</td>
+        <td>
+            <a class="btn btn-success" href="{{ route('clientSubscriptions.edit' , ['clientSubscription' =>  $data['clientSubscriptions'][$key]->id]) }}">Modifica</a>
+        </td>
+
+        <td>
+            <form method='POST' action="{{ route('clientSubscriptions.destroy', ['clientSubscription' =>  $data['clientSubscriptions'][$key]->id]) }}">
+                @csrf
+                @method('DELETE')
+
+                <input class="btn btn-danger" type="submit" value="Elimina">
+            </form>
+        </td>
     </tr>
     @endforeach
     </tbody>

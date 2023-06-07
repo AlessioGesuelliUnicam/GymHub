@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Role;
 use App\Models\Staff;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -46,7 +47,26 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:20',
+            'surname' => 'required|max:30',
+            'phone_number' => 'required|max:11',
+        ]);
+
+        $staff = new Staff();
+
+        $staff->name = $request->input('name');
+        $staff->surname = $request->input('surname');
+        $staff->birth_date = $request->input('birth_date');
+        $staff->city_residence = $request->input('city_residence');
+        $staff->address_residence = $request->input('address_residence');
+        $staff->phone_number = $request->input('phone_number');
+        $staff->email = $request->input('email');
+        $staff->id_role = Role::where('type','like',$request->input('roles'))->value('id');
+
+        $staff->save();
+
+        return redirect()->route('staff.index')->with('Successo', 'Membro dello staff creato con successo');
     }
 
     /**
