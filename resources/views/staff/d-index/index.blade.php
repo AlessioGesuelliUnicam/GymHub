@@ -31,6 +31,17 @@
         <td>{{$staffMember -> phone_number}}</td>
         <td>{{$staffMember -> email}}</td>
         <td>{{$roles[$index]}}</td>
+        <td>
+            <a class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500" href="{{ route('staff.edit', ['staff' => $staffMember->id]) }}">Modifica</a>
+        </td>
+        <td>
+            <form method='POST' action="{{ route('staff.destroy', ['staff' => $staffMember->id]) }}">
+                @csrf
+                @method('DELETE')
+
+                <input class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500" type="submit" value="Elimina">
+            </form>
+        </td>
     </tr>
 
     @endforeach

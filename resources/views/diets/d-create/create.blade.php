@@ -18,7 +18,7 @@
 
     <div class="form-group">
         <label for="title">Cliente:</label><br>
-        <input list="clienti" class="form-control" name="clients" placeholder="Cliente">
+        <input list="clienti" class="form-control" name="client_id" placeholder="Cliente">
         <datalist id="clienti">
 
         </datalist>

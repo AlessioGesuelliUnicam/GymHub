@@ -21,7 +21,7 @@ class ClientTableSeeder extends Seeder
     {
 
         //inizio clienti
-
+/*
         $client = new Client();
         $client->name = 'Andrea';
         $client->surname = 'Giuliani';
@@ -93,11 +93,11 @@ class ClientTableSeeder extends Seeder
         $client2->save();
         $client3->save();
         $client4->save();
-
+*/
         //fine clienti
         //--------------------------------
         //inizio role
-
+/*
         $role = new Role();
         $role->type = 'Admin';
         $role->save();
@@ -109,11 +109,11 @@ class ClientTableSeeder extends Seeder
         $role2 = new Role();
         $role2->type = 'Nutrizionista';
         $role2->save();
-
+*/
         //fine role
         //--------------------------------
         //inizio staff
-
+/*
         $staff = new Staff();
         $staff->name = 'Alessio';
         $staff->surname = 'Gesuelli';
@@ -146,11 +146,11 @@ class ClientTableSeeder extends Seeder
         $staff2->email = 'andrea.giuliani@gmail.com';
         $staff2->id_role = '3';
         $staff2->save();
-
+*/
         //fine staff
         //--------------------------------------------
         //inizio subscription
-
+/*
         $subscription = new Subscription();
         $subscription->duration = 1;
         $subscription->price = 50;
@@ -171,7 +171,7 @@ class ClientTableSeeder extends Seeder
         $subscription2->save();
         $subscription3->save();
         $subscription4->save();
-
+*/
         //inizio trainingsheet
 
         $trainingSheet = new TrainingSheet();

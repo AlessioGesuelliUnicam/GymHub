@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Client;
+use App\Models\ClientSubscription;
 use App\Models\Diet;
 use App\Http\Controllers\Controller;
+use App\Models\TrainingSheet;
 use Illuminate\Http\Request;
 
 class DietController extends Controller
@@ -17,7 +19,7 @@ class DietController extends Controller
         $diets = Diet::all();
 
         $data = [
-            "diets"=> $diets];
+            "diets" => $diets];
 
         return view('diets.d-index.index', $data);
     }
@@ -35,7 +37,19 @@ class DietController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'client_id' => 'required',
+            'diet' => 'required',
+        ]);
+
+        $diets = new Diet();
+
+        $diets->client_id = $request->input('client_id');
+        $diets->diet = $request->input('diet');
+
+        $diets->save();
+
+        return redirect()->route('diets.index')->with('Successo', 'Dieta inserita con successo');
     }
 
     /**
@@ -51,7 +65,11 @@ class DietController extends Controller
      */
     public function edit(Diet $diet)
     {
-        //
+        $data = [
+            'diet' => $diet
+        ];
+
+        return view('diets.d-edit.edit', $data);
     }
 
     /**
@@ -59,7 +77,22 @@ class DietController extends Controller
      */
     public function update(Request $request, Diet $diet)
     {
-        //
+
+        var_dump($request->input('client_id'));
+
+        $request->validate([
+
+            'client_id' => 'required',
+            'diet' => 'required',
+
+        ]);
+
+        $diet->client_id = $request->input('client_id');
+        $diet->diet = $request->input('diet');
+
+        $diet->save();
+
+        return redirect()->route('diets.index')->with('Successo', 'Dieta salvata con successo');
     }
 
     /**
@@ -67,6 +100,11 @@ class DietController extends Controller
      */
     public function destroy(Diet $diet)
     {
-        //
+
+        $diet->delete();
+
+
+        return redirect()->route('diets.index')->with('Successo', 'Dieta eliminata con successo');
+
     }
 }

@@ -19,6 +19,20 @@
                 <tr>
                     <th>{{$diet -> diet}}</th>
                     <th>{{$diet -> client_id}}</th>
+
+                    <th>
+                        <a class="btn btn-success" href="{{ route('diets.edit' , ['diet' => $diet->id]) }}">Modifica</a>
+                    </th>
+
+                    <th>
+                        <form method='POST' action="{{ route('diets.destroy', ['diet' => $diet->id]) }}">
+                            @csrf
+                            @method('DELETE')
+
+                            <input class="btn btn-danger" type="submit" value="Elimina">
+                        </form>
+                    </th>
+
                 </tr>
 
             @endforeach
