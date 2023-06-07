@@ -15,8 +15,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased">
+@include('layouts.navigation')
+
 <div class="min-h-screen bg-white">
-    @include('layouts.navigation')
+
 
     <!-- Page Heading -->
     @if (isset($header))
@@ -26,11 +28,13 @@
         </div>
     </header>
     @endif
-
-    <!-- Page Content -->
-    <main>
-        <div>@yield('content')</div>
-    </main>
+    <div class="flex">
+        @include('components.sidebar')
+        <!-- Page Content -->
+        <main>
+            <div>@yield('content')</div>
+        </main>
+    </div>
 </div>
 </body>
 </html>
