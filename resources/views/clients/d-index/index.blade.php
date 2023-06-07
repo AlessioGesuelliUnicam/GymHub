@@ -15,10 +15,10 @@
 @else
 
 <div class="flex flex-col">
-    <div class="overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="overflow-x-auto sm:rounded-lg">
         <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-            <div class="overflow-hidden">
-                <table class="min-w-full text-center text-sm font-light ">
+            <div class="overflow-hidden shadow-md">
+                <table class="min-w-full  text-center text-sm font-light ">
                     <thead
                         class="bg-gray-50 dark:bg-gray-800">
                     <tr>
@@ -54,14 +54,14 @@
                         <td class="whitespace-nowrap  px-6 py-4">{{$client -> free_entry}}</td>
                         <td class="whitespace-nowrap  px-6 py-4">{{$client -> CF}}</td>
                         <td>
-                            <a class="btn btn-success" href="{{ route('clients.edit' , ['client' => $client->id]) }}">Modifica</a>
+                            <a class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500" href="{{ route('clients.edit' , ['client' => $client->id]) }}">Modifica</a>
                         </td>
                         <td>
                             <form method='POST' action="{{ route('clients.destroy', ['client' => $client->id]) }}">
                                 @csrf
                                 @method('DELETE')
 
-                                <input class="btn btn-danger" type="submit" value="Elimina">
+                                <input class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500" type="submit" value="Elimina">
                             </form>
                         </td>
                     </tr>
@@ -71,9 +71,10 @@
             </div>
         </div>
     </div>
-    <button>
-        <a href="{{route('clients.create')}}">Nuovo cliente</a>
-    </button>
 </div>
+<button class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500">
+    <a href="{{route('clients.create')}}">Nuovo cliente</a>
+</button>
+
 @endif
 @endsection
