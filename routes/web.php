@@ -28,12 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('clients','App\Http\Controllers\Admin\ClientController')->middleware('auth');;
-Route::resource('subscriptions','App\Http\Controllers\Admin\SubscriptionController')->middleware('auth');;
-Route::resource('diets','App\Http\Controllers\Admin\DietController')->middleware('auth');;
-Route::resource('trainingSheets','App\Http\Controllers\Admin\TrainingSheetController')->middleware('auth');;
-Route::resource('roles','App\Http\Controllers\Admin\RoleController')->middleware('auth');;
-Route::resource('clientSubscriptions','App\Http\Controllers\Admin\ClientSubscriptionController')->middleware('auth');;
-Route::resource('staff','App\Http\Controllers\Admin\StaffController')->middleware('auth');;
+Route::resource('clients','App\Http\Controllers\Admin\ClientController')->middleware('auth');
+Route::resource('subscriptions','App\Http\Controllers\Admin\SubscriptionController')->middleware('auth');
+Route::resource('diets','App\Http\Controllers\Admin\DietController')->middleware('auth');
+Route::resource('trainingSheets','App\Http\Controllers\Admin\TrainingSheetController')->middleware('auth');
+Route::resource('roles','App\Http\Controllers\Admin\RoleController')->middleware('auth');
+Route::resource('clientSubscriptions','App\Http\Controllers\Admin\ClientSubscriptionController')->middleware('auth');
+Route::resource('staff','App\Http\Controllers\Admin\StaffController')->middleware('auth');
 
 require __DIR__.'/auth.php';

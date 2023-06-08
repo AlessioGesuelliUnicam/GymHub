@@ -13,29 +13,31 @@
 <h1 class="text-center">Non ci sono dati.</h1>
 <a style="color: white;" href="{{route('clients.create')}}">Nuovo cliente</a>
 @else
-
 <div class="flex flex-col">
-    <div class="overflow-x-auto sm:rounded-lg">
-        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+    <h2 class="font-semibold  text-xl p-6 bg-gray-50 dark:bg-gray-800 font-semibold  text-white ">
+        {{ __('Clienti') }}
+    </h2>
+    <div class="overflow-x-auto sm:rounded-lg p-4">
+        <div class="inline-block">
             <div class="overflow-hidden shadow-md">
-                <table class="min-w-full  text-center text-sm font-light ">
+                <table class="w-auto  text-center text-sm font-light ">
                     <thead
                         class="bg-gray-50 dark:bg-gray-800">
                     <tr>
-                        <th scope="col" class="p-4 hidden text-white">ID</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Nome</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Cognome</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Data di nascita</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Città</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Indirizzo</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Telefono</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Email</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Certificato medico</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Scadenza certificato</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Ingresso gratuito</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Codice fiscale</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Modifica</th>
-                        <th scope="col" class=" px-6 py-4 text-white">Elimina</th>
+                        <th scope="col" class="hidden">ID</th>
+                        <th scope="col" class="p-6  text-white">Nome</th>
+                        <th scope="col" class="  text-white">Cognome</th>
+                        <th scope="col" class="  text-white">Data di nascita</th>
+                        <th scope="col" class="  text-white">Città</th>
+                        <th scope="col" class="  text-white">Indirizzo</th>
+                        <th scope="col" class="  text-white">Telefono</th>
+                        <th scope="col" class="  text-white">Email</th>
+                        <th scope="col" class="  text-white">Certificato medico</th>
+                        <th scope="col" class="  text-white">Scadenza certificato</th>
+                        <th scope="col" class="  text-white">Ingresso gratuito</th>
+                        <th scope="col" class="  text-white">Codice fiscale</th>
+                        <th scope="col" class="  text-white">Modifica</th>
+                        <th scope="col" class="  text-white">Elimina</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,14 +56,16 @@
                         <td class="whitespace-nowrap  px-6 py-4">{{$client -> free_entry}}</td>
                         <td class="whitespace-nowrap  px-6 py-4">{{$client -> CF}}</td>
                         <td>
-                            <a class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500" href="{{ route('clients.edit' , ['client' => $client->id]) }}">Modifica</a>
+                            <a class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500"
+                               href="{{ route('clients.edit' , ['client' => $client->id]) }}">Modifica</a>
                         </td>
                         <td>
                             <form method='POST' action="{{ route('clients.destroy', ['client' => $client->id]) }}">
                                 @csrf
                                 @method('DELETE')
 
-                                <input class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500" type="submit" value="Elimina">
+                                <input class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500"
+                                       type="submit" value="Elimina">
                             </form>
                         </td>
                     </tr>
@@ -72,9 +76,11 @@
         </div>
     </div>
 </div>
-<button class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500">
-    <a href="{{route('clients.create')}}">Nuovo cliente</a>
-</button>
+<div class="p-2 right-0 absolute">
+    <button class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500">
+        <a href="{{route('clients.create')}}">Nuovo cliente</a>
+    </button>
+</div>
 
 @endif
 @endsection

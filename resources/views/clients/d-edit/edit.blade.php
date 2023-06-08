@@ -1,4 +1,4 @@
-@extends('clients.d-edit.layout-bootstrap-edit')
+@extends('layouts.app')
 @section('content')
 
 <form method="POST" action="{{route('clients.update', ['client' => $client->id])}}">
