@@ -19,7 +19,7 @@
     </h2>
     <div class="overflow-x-auto sm:rounded-lg p-4 ">
         <div class="inline-block">
-            <div>
+            <div class="shadow-md">
                 <table class="text-center text-sm font-light ">
                     <thead
                         class="bg-gray-50 dark:bg-gray-800">
