@@ -1,5 +1,4 @@
-@extends('staff.d-create.layout-bootstrap-create')
-
+@extends('layouts.app')
 @section('content')
     <form method="POST" action="{{route('staff.store')}}">
 

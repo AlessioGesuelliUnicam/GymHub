@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('diets.index') }}">Home</a>
+                <a class="navbar-brand" href="{{ route('diets.index') }}">Diete</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
