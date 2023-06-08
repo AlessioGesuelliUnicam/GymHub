@@ -113,6 +113,12 @@ class ClientSubscriptionController extends Controller
      */
     public function destroy(ClientSubscription $clientSubscription)
     {
-        //
+        // Elimina la ClientSubscription dal database
+        $clientSubscription->delete();
+
+        // Reindirizza alla pagina index delle clientSubscriptions con un messaggio di successo
+        return redirect()->route('clientSubscriptions.index')
+            ->with('success', 'ClientSubscription eliminata con successo.');
     }
+
 }
