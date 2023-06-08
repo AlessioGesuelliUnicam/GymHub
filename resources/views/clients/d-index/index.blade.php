@@ -17,7 +17,7 @@
     <h2 class="font-semibold  text-xl p-6 bg-gray-50 dark:bg-gray-800 font-semibold  text-white ">
         {{ __('Clienti') }}
     </h2>
-    <div class="overflow-x-auto sm:rounded-lg">
+    <div class="overflow-x-auto sm:rounded-lg p-4">
         <div class="inline-block">
             <div class="overflow-hidden shadow-md">
                 <table class="w-auto  text-center text-sm font-light ">
@@ -59,7 +59,7 @@
                             <a class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500" href="{{ route('clients.edit' , ['client' => $client->id]) }}">Modifica</a>
                         </td>
                         <td>
-                            <input method='POST' action="{{ route('clients.destroy', ['client' => $client->id]) }}">
+                            <form method='POST' action="{{ route('clients.destroy', ['client' => $client->id]) }}">
                                 @csrf
                                 @method('DELETE')
 
