@@ -1,4 +1,4 @@
-@extends('diets.d-create.layout-bootstrap')
+@extends('layouts.app')
 
 @section('content')
 <form method="POST" action="{{route('diets.store')}}">

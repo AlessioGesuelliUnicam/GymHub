@@ -1,4 +1,4 @@
-@extends('diets.d-edit.layout-bootstrap-edit')
+@extends('layouts.app')
 @section('content')
 
 <form method="POST" action="{{route('diets.update', ['diet' => $diet->id])}}">
