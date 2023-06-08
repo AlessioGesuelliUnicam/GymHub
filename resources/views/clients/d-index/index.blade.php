@@ -17,7 +17,7 @@
     <h2 class="font-semibold  text-xl p-6 bg-gray-50 dark:bg-gray-800 font-semibold  text-white ">
         {{ __('Clienti') }}
     </h2>
-    <div class="overflow-x-auto sm:rounded-lg p-4">
+    <div class="overflow-x-auto sm:rounded-lg p-4 ">
         <div class="inline-block">
             <div class="shadow-md">
                 <table class="text-center text-sm font-light ">
@@ -26,18 +26,18 @@
                     <tr>
                         <th scope="col" class="hidden">ID</th>
                         <th scope="col" class="px-6 py-4  text-white">Nome</th>
-                        <th scope="col" class="px-6 py-4 text-white">Cognome</th>
-                        <th scope="col" class="px-6 py-4  text-white">Data di nascita</th>
-                        <th scope="col" class="px-6 py-4  text-white">Città</th>
-                        <th scope="col" class="px-6 py-4  text-white">Indirizzo</th>
-                        <th scope="col" class="px-6 py-4  text-white">Telefono</th>
-                        <th scope="col" class="px-6 py-4  text-white">Email</th>
-                        <th scope="col" class="px-6 py-4  text-white">Certificato medico</th>
-                        <th scope="col" class="px-6 py-4  text-white">Scadenza certificato</th>
-                        <th scope="col" class="px-6 py-4  text-white">Ingresso gratuito</th>
-                        <th scope="col" class="px-6 py-4  text-white">Codice fiscale</th>
-                        <th scope="col" class="px-6 py-4  text-white">Modifica</th>
-                        <th scope="col" class="px-6 py-4  text-white">Elimina</th>
+                        <th scope="col" class="6px-6 py-4 text-white">Cognome</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Data di nascita</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Città</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Indirizzo</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Telefono</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Email</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Certificato medico</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Scadenza certificato</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Ingresso gratuito</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Codice fiscale</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Modifica</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Elimina</th>
                     </tr>
                     </thead>
                     <tbody>

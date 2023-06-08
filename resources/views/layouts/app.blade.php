@@ -17,17 +17,8 @@
 <body class="font-sans antialiased">
 @include('layouts.navigation')
 
-<div class="min-h-screen bg-white" style="height: 100vh;">
+<div class="bg-white">
 
-
-    <!-- Page Heading -->
-    @if (isset($header))
-    <header class="bg-white dark:bg-gray-800 shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            {{ $header }}
-        </div>
-    </header>
-    @endif
     <div class="flex bg-gray-50" style="height: 100vh;">
         @include('components.sidebar')
         <!-- Page Content -->
