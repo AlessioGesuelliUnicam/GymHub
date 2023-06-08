@@ -17,27 +17,27 @@
     <h2 class="font-semibold  text-xl p-6 bg-gray-50 dark:bg-gray-800 font-semibold  text-white ">
         {{ __('Clienti') }}
     </h2>
-    <div class="overflow-x-auto sm:rounded-lg p-4">
+    <div class="overflow-x-auto sm:rounded-lg p-4 ">
         <div class="inline-block">
-            <div class="overflow-hidden shadow-md">
-                <table class="w-auto  text-center text-sm font-light ">
+            <div>
+                <table class="text-center text-sm font-light ">
                     <thead
                         class="bg-gray-50 dark:bg-gray-800">
                     <tr>
                         <th scope="col" class="hidden">ID</th>
-                        <th scope="col" class="p-6  text-white">Nome</th>
-                        <th scope="col" class="  text-white">Cognome</th>
-                        <th scope="col" class="  text-white">Data di nascita</th>
-                        <th scope="col" class="  text-white">Città</th>
-                        <th scope="col" class="  text-white">Indirizzo</th>
-                        <th scope="col" class="  text-white">Telefono</th>
-                        <th scope="col" class="  text-white">Email</th>
-                        <th scope="col" class="  text-white">Certificato medico</th>
-                        <th scope="col" class="  text-white">Scadenza certificato</th>
-                        <th scope="col" class="  text-white">Ingresso gratuito</th>
-                        <th scope="col" class="  text-white">Codice fiscale</th>
-                        <th scope="col" class="  text-white">Modifica</th>
-                        <th scope="col" class="  text-white">Elimina</th>
+                        <th scope="col" class="px-6 py-4  text-white">Nome</th>
+                        <th scope="col" class="6px-6 py-4 text-white">Cognome</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Data di nascita</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Città</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Indirizzo</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Telefono</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Email</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Certificato medico</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Scadenza certificato</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Ingresso gratuito</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Codice fiscale</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Modifica</th>
+                        <th scope="col" class="6px-6 py-4  text-white">Elimina</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,11 +75,13 @@
         </div>
     </div>
 </div>
-<div class="p-2 right-0 absolute">
+<div class="p-4 right-0 absolute">
     <button class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500">
         <a href="{{route('clients.create')}}">Nuovo cliente</a>
     </button>
 </div>
+
+
 
 @endif
 @endsection
