@@ -18,23 +18,28 @@
 
     <div class="form-group">
         <label for="title">Cliente:</label>
-        <input type="text" class="form-control" name="name" placeholder="Nome" value="{{ old('name') }}">
+        <input list="cliente" class="form-control" autocomplete="off" name="cliente" placeholder="Cliente" value="{{ old('client') }}">
+        <datalist id="cliente">
+            @foreach($clients as $client)
+                <option value="{{$client->id.' '.$client->name.' '.$client->surname }}">
+            @endforeach
+        </datalist>
+
     </div>
 
     <div class="form-group">
         <label for="title">Abbonamento:</label>
-        <input type="text" class="form-control" name="surname" placeholder="Cognome" value="{{ old('surname') }}">
+        <input list="abbonamenti" class="form-control" name="subscription" placeholder="Abbonamento" value="{{ old('subscriptions') }}">
+        <datalist id="abbonamenti">
+            @foreach($subscriptions as $subscription)
+                <option value="{{$subscription -> duration}}">
+            @endforeach
+        </datalist>
     </div>
 
     <div class="form-group">
         <label for="title">Data di inizio:</label>
-        <input type="date" class="form-control" name="birth_date" value="{{ old('birth_date') }}">
-    </div>
-
-    <div class="form-group">
-        <label for="title">Data di fine:</label>
-        <input type="text" class="form-control" name="city_residence" placeholder="Città"
-               value="{{ old('city_residence') }}">
+        <input type="date" class="form-control" name="start_date" value="{{ old('start_date') }}">
     </div>
 
     <button type="submit" class="btn btn-success">Salva</button>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Client;
 use App\Models\ClientSubscription;
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,7 +45,13 @@ class ClientSubscriptionController extends Controller
      */
     public function create()
     {
-        return view('clientSubscriptions.d-create.create');
+        $subscriptions = DB::table('subscriptions')->get();
+        $clients = DB::table('clients')->select('id','name', 'surname')->get();
+        $data = [
+            "subscriptions" => $subscriptions,
+            "clients" => $clients,
+        ];
+        return view('clientSubscriptions.d-create.create', $data);
     }
 
     /**
@@ -51,8 +59,30 @@ class ClientSubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+            'cliente' => 'required'
+
+        ]);
+
+        $date = date_create($request->input('start_date'));
+        date_modify($date, '+'.$request->input('subscription').' month');  // Somma un mese
+
+        $newDate = date_format($date, 'Y-m-d');
+
+        $clientSubscription = new ClientSubscription();
+
+        $clientSubscription->client_id = explode(' ',$request->input('cliente'))[0];
+        $clientSubscription->subscription_id = Subscription::where('duration','=',$request->input('subscription'))->value('id');
+        $clientSubscription->start_subscription = $request->input('start_date');
+        $clientSubscription->end_subscription = $newDate;
+        $clientSubscription->save();
+
+        // Esempio di reindirizzamento alla visualizzazione dei dettagli della nuova sottoscrizione
+        return redirect()->route('clientSubscriptions.index')
+            ->with('success', 'Sottoscrizione creata con successo.');
     }
+
+
 
     /**
      * Display the specified resource.
