@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="flex h-48 mb-4">
-            <div class="max-w-full">
+            <div class="max-w-full" style="width: 100%">
                 <div class="p-2 relative overflow-x-auto">
                     <table class="w-full text-center  text-sm font-light shadow-md table-auto">
                         <thead class="text-xs bg-gray-50 dark:bg-gray-800 uppercase">
