@@ -49,7 +49,7 @@ class DietController extends Controller
 
         $diets->save();
 
-        return redirect()->route('diets.index')->with('Successo', 'Dieta inserita con successo');
+        return redirect()->route('diets.index');
     }
 
     /**
@@ -92,7 +92,7 @@ class DietController extends Controller
 
         $diet->save();
 
-        return redirect()->route('diets.index')->with('Successo', 'Dieta salvata con successo');
+        return redirect()->route('diets.index');
     }
 
     /**
@@ -104,7 +104,7 @@ class DietController extends Controller
         $diet->delete();
 
 
-        return redirect()->route('diets.index')->with('Successo', 'Dieta eliminata con successo');
+        return redirect()->route('diets.index');
 
     }
 }
