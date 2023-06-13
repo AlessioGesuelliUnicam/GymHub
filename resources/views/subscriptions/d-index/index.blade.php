@@ -25,6 +25,19 @@
             @endif
         </th>
         <th>{{$subscription -> price . "€"}}</th>
+        <td>
+            <a class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500"
+               href="{{ route('subscriptions.edit' , ['subscription' => $subscription->id]) }}">Modifica</a>
+        </td>
+        <td>
+            <form method='POST' action="{{ route('subscriptions.destroy', ['subscription' => $subscription->id]) }}">
+                @csrf
+                @method('DELETE')
+
+                <input class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500"
+                       type="submit" value="Elimina">
+            </form>
+        </td>
     </tr>
 
     @endforeach
