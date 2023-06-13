@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Client;
 use App\Http\Controllers\Controller;
-use App\Models\ClientSubscription;
-use App\Models\Diet;
-use App\Models\TrainingSheet;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class  ClientController extends Controller
 {
@@ -62,7 +59,7 @@ class  ClientController extends Controller
 
         $client->save();
 
-        return redirect()->route('clients.index')->with('Successo', 'Cliente creato con successo');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -111,7 +108,7 @@ class  ClientController extends Controller
 
         $client->save();
 
-        return redirect()->route('clients.index')->with('Successo', 'Cliente salvato con successo');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -119,12 +116,12 @@ class  ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        ClientSubscription::where('client_id', $client->id)->delete();
-        Diet::where('client_id', $client->id)->delete();
-        TrainingSheet::where('client_id', $client->id)->delete();
+        DB::table('client_subscriptions')->where('client_id', $client->id)->delete();
+        DB::table('diets')->where('client_id', $client->id)->delete();
+        DB::table('training_sheets')->where('client_id', $client->id)->delete();
         $client->delete();
 
 
-        return redirect()->route('clients.index')->with('Successo', 'Cliente eliminato con successo');
+        return redirect()->route('clients.index');
     }
 }

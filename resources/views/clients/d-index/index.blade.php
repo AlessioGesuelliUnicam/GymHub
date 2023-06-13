@@ -1,13 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-@if(session('Successo'))
-<div class="">
-    {{session('Successo')}}
-
-</div>
-@endif
-
 @if(count($clients) == 0)
 
 <h1 class="text-center">Non ci sono dati.</h1>
@@ -47,7 +40,7 @@
         <div class="flex h-48 mb-4">
             <div class="max-w-full" style="width: 100%">
                 <div class="p-2 relative overflow-x-auto">
-                    <table class="w-full text-center  text-sm font-light shadow-md table-auto">
+                    <table class="w-full text-center  text-sm font-light shadow-md table-auto rounded-full">
                         <thead class="text-xs bg-gray-50 dark:bg-gray-800 uppercase">
                         <tr>
                             <th scope="col" class="hidden w-1/12">ID</th>
@@ -59,7 +52,6 @@
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Telefono</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Email</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Certificato medico</th>
-                            <th scope="col" class="px-6 py-4 text-white w-1/12">Scadenza certificato</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Ingresso gratuito</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Codice fiscale</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Modifica</th>
@@ -72,14 +64,26 @@
                             <td class="whitespace-nowrap   px-6 py-4 hidden w-1/12">{{$client -> id}}</td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> name}}</td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> surname}}</td>
-                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> birth_date}}</td>
+                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">@if (!is_null($client->birth_date))
+                                {{ \Carbon\Carbon::parse($client->birth_date)->format('d-m-Y') }}
+                                @endif
+                            </td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> city_residence}}</td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> address_residence}}</td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> phone_number}}</td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> email}}</td>
-                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> med_cert}}</td>
-                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> med_cert_exp}}</td>
-                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> free_entry}}</td>
+                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">@if (!is_null($client->med_cert_exp))
+                                {{ \Carbon\Carbon::parse($client->med_cert_exp)->format('d-m-Y') }}
+                                @else
+                                no
+                                @endif
+                            </td>
+                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">@if (!is_null($client->free_entry))
+                                {{ \Carbon\Carbon::parse($client->free_entry)->format('d-m-Y') }}
+                                @else
+                                no
+                                @endif
+                            </td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client -> CF}}</td>
                             <td>
                                 <a class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500"
@@ -90,8 +94,9 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <input class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500"
-                                           type="submit" value="Elimina">
+                                    <input
+                                        class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500"
+                                        type="submit" value="Elimina">
                                 </form>
                             </td>
                         </tr>
@@ -100,12 +105,9 @@
                     </table>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-
-
 
 
 @endif

@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 @include('layouts.navigation')
 
-<div class="bg-gray-50">
+<div>
     @include('components.sidebar')
     <!-- Page Content -->
     <main>

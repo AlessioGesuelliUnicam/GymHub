@@ -2,7 +2,7 @@
 @section('content')
 
 
-<div class="p-4 sm:ml-64">
+<div class="p-4 sm:ml-64 text-white">
     <div class="p-4 dark:border-gray-700">
         <div class="grid grid-cols-3 mb-4 text-white bg-gray-800 rounded uppercase">
             <div class="flex items-center justify-center h-24">
@@ -25,7 +25,8 @@
                         <svg aria-hidden="true"
                              class="w-6 h-6 hover:fill-white"
                              fill="#f56565" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                            <path
+                                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
                         </svg>
                         </svg>
                     </a>
@@ -48,22 +49,22 @@
                 </div>
                 @endif
 
-                <div class="form-group mb-6">
-                    <label for="title" class="mt-10 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome:</label>
+                <div class="form-group mb-6 mt-10">
+                    <label for="name">Nome:</label>
                     <input type="text"
                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            name="name" placeholder="Nome" value="{{ old('name', $client->name) }}">
                 </div>
                 <div class="form-group mb-6">
-                    <label for="title"
-                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cognome:</label>
+                    <label for="surname"
+                    >Cognome:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            name="surname" placeholder="Cognome" value="{{ old('surname', $client->surname) }}">
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data di
+                    <label for="birth_date">Data di
                         nascita:</label>
                     <input type="date"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -72,8 +73,7 @@
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="title"
-                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Città:</label>
+                    <label for="city_residence">Città:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            name="city_residence" placeholder="Città"
@@ -81,8 +81,7 @@
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="title"
-                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Indirizzo:</label>
+                    <label for="address_residence">Indirizzo:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            name="address_residence" placeholder="Indirizzo"
@@ -90,8 +89,7 @@
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="title"
-                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono:</label>
+                    <label for="phone_number">Telefono:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            name="phone_number" placeholder="Telefono"
@@ -99,29 +97,35 @@
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="title"
-                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email:</label>
+                    <label for="email">Email:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            name="email" placeholder="Email" value="{{ old('email', $client->email) }}">
                 </div>
 
                 <div class="form- mb-6">
-                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Certificato medico:</label>
+                    <label for="med_cert">Certificato medico:</label>
                     <div class="flex items-center justify-center w-full">
-                        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <label for="dropzone-file"
+                               class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                             <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Clicca per caricare</span> o trascina e lascia</p>
+                                <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none"
+                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                </svg>
+                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Clicca per caricare</span>
+                                    o trascina e lascia</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG, PDF o GIF</p>
                             </div>
-                            <input id="dropzone-file" name="med_cert" type="file" class="hidden form-control" value="{{ old('med_cert', $client->med_cert) }}" />
+                            <input id="dropzone-file" name="med_cert" type="file" class="hidden form-control"
+                                   value="{{ old('med_cert', $client->med_cert) }}"/>
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data di
+                    <label for="med_cert_exp">Data di
                         scadenza certificato medico:</label>
                     <input type="date"
                            class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -129,8 +133,16 @@
                            value="{{ old('med_cert_exp', $client->med_cert_exp) }}">
                 </div>
 
+                <div class="form-group mb-6">
+                    <label for="free_entry">Ingresso gratuito:</label>
+                    <input type="date"
+                           class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           name="free_entry" placeholder="Ingresso gratuito"
+                           value="{{ old('free_entry', $client->free_entry) }}">
+                </div>
+
                 <div class="form-group">
-                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Codice
+                    <label for="CF">Codice
                         fiscale:</label>
                     <input type="text"
                            class="mb-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -143,8 +155,8 @@
                         Salva
                     </button>
                 </div>
+            </form>
         </div>
     </div>
 </div>
-</form>
 @endsection
