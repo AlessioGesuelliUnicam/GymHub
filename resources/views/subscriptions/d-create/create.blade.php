@@ -18,7 +18,7 @@
 
     <div class="form-group">
         <label for="title">Durata:</label>
-        <input type="text" class="form-control" name="duration" placeholder="Durata" value="{{ old('duration') }}">
+        <input type="text" class="form-control" name="duration" placeholder="Durata in mesi" value="{{ old('duration') }}">
     </div>
 
     <div class="form-group">

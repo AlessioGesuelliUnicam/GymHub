@@ -34,7 +34,18 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'duration' => 'required',
+            'price' => 'required'
+        ]);
+
+        $subscription = new Subscription();
+
+        $subscription->duration = $request->input('duration');
+        $subscription->price = $request->input('price');
+
+        $subscription->save();
+        return redirect()->route('subscriptions.index')->with('Successo', 'Abbonamento creato con successo');
     }
 
     /**
@@ -50,7 +61,7 @@ class SubscriptionController extends Controller
      */
     public function edit(Subscription $subscription)
     {
-        //
+        return view('subscriptions.d-edit.edit', compact('subscription'));
     }
 
     /**
@@ -58,7 +69,16 @@ class SubscriptionController extends Controller
      */
     public function update(Request $request, Subscription $subscription)
     {
-        //
+        $request->validate([
+            'duration' => 'required',
+            'price' => 'required'
+        ]);
+
+        $subscription->duration = $request->input('duration');
+        $subscription->price = $request->input('price');
+        $subscription->save();
+
+        return redirect()->route('subscriptions.index')->with('success', 'Iscrizione aggiornata con successo');
     }
 
     /**
@@ -66,6 +86,8 @@ class SubscriptionController extends Controller
      */
     public function destroy(Subscription $subscription)
     {
-        //
+        $subscription->delete();
+
+        return redirect()->route('subscriptions.index')->with('success', 'Abbonamento eliminato con successo');
     }
 }
