@@ -49,7 +49,7 @@
                             <th scope="col" class="hidden w-1/12">ID</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Nome</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Cognome</th>
-                            <th scope="col" class="px-6 py-4 text-white w-1/12">Dieta</th>
+                            <th scope="col" class="px-6 py-4 text-white w-1/12">Scheda</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Modifica</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Elimina</th>
 

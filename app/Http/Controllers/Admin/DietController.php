@@ -8,6 +8,7 @@ use App\Models\Diet;
 use App\Http\Controllers\Controller;
 use App\Models\TrainingSheet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DietController extends Controller
 {
@@ -19,8 +20,22 @@ class DietController extends Controller
         $diets = Diet::all();
 
         $data = [
-            "diets" => $diets];
+            "diets" => $diets,
+            "clients" => []
+        ];
+        foreach ($diets as $dietRow) {
+            $clients = DB::table('clients')
+                ->where('id', $dietRow->client_id)
+                ->select('name', 'surname')
+                ->get();
 
+            foreach ($clients as $client) {
+                $data['clients'][] = [
+                    'name' => $client->name,
+                    'surname' => $client->surname,
+                ];
+            }
+        }
         return view('diets.d-index.index', $data);
     }
 
@@ -29,8 +44,13 @@ class DietController extends Controller
      */
     public function create()
     {
-        return view('diets.d-create.create');
+        $clients = DB::table('clients')
+            ->select('id', 'name', 'surname')
+            ->get();
+
+        return view('diets.d-create.create', ['clients' => $clients]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -44,7 +64,7 @@ class DietController extends Controller
 
         $diets = new Diet();
 
-        $diets->client_id = $request->input('client_id');
+        $diets->client_id =  explode(' ',$request->input('client_id'))[0];
         $diets->diet = $request->input('diet');
 
         $diets->save();
@@ -65,12 +85,18 @@ class DietController extends Controller
      */
     public function edit(Diet $diet)
     {
+        $clients = DB::table('clients')
+            ->select('id', 'name', 'surname')
+            ->get();
+
         $data = [
-            'diet' => $diet
+            "diet" => $diet,
+            "clients" => $clients
         ];
 
         return view('diets.d-edit.edit', $data);
     }
+
 
     /**
      * Update the specified resource in storage.
