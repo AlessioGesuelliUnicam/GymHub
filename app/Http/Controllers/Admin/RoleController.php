@@ -46,7 +46,7 @@ class RoleController extends Controller
             $roles->type = $request->input('name_roles');
             $roles->save();
 
-            return redirect()->route('roles.index')->with('Successo', 'Ruolo creato con successo');
+            return redirect()->route('roles.index');
         }
     }
 
@@ -81,7 +81,7 @@ class RoleController extends Controller
         $role->type = $request->input('name_roles');
         $role->save();
 
-        return redirect()->route('roles.index')->with('Successo', 'Ruolo salvato con successo');
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -90,10 +90,10 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         if (Staff::where($role->id, 'id_role')) {
-            return redirect()->route('roles.index')->with('Fallimento', 'Ruolo impossibile da eliminare, modificare ruolo dei componenti dello staff');
+            return redirect()->route('roles.index');
         } else {
             $role->delete();
-            return redirect()->route('roles.index')->with('Successo', 'Ruolo eliminato con successo');
+            return redirect()->route('roles.index');
         }
 
     }

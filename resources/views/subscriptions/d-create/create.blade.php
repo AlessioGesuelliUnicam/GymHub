@@ -53,14 +53,14 @@
                     <label for="duration">Durata:</label>
                     <input type="text"
                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="price" placeholder="Nome" value="{{ old('name') }}">
+                           name="duration" placeholder="Nome" value="{{ old('name') }}">
                 </div>
 
                 <div class="form-group mb-6">
                     <label for="price">Prezzo:</label>
                     <input type="text"
                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="duration" placeholder="Cognome" value="{{ old('surname') }}">
+                           name="price" placeholder="Cognome" value="{{ old('surname') }}">
                 </div>
 
                 <button type="submit"

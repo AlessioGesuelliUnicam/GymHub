@@ -45,7 +45,7 @@ class SubscriptionController extends Controller
         $subscription->price = $request->input('price');
 
         $subscription->save();
-        return redirect()->route('subscriptions.index')->with('Successo', 'Abbonamento creato con successo');
+        return redirect()->route('subscriptions.index');
     }
 
     /**
@@ -88,6 +88,6 @@ class SubscriptionController extends Controller
     {
         $subscription->delete();
 
-        return redirect()->route('subscriptions.index')->with('success', 'Abbonamento eliminato con successo');
+        return redirect()->route('subscriptions.index');
     }
 }
