@@ -45,8 +45,11 @@ class TrainingSheetController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('trainingSheets.d-create.create');
+    {   $clients = DB::table('clients')
+        ->select('id', 'name', 'surname')
+        ->get();
+
+        return view('trainingSheets.d-create.create', ['clients' => $clients]);
     }
 
     /**
@@ -55,14 +58,14 @@ class TrainingSheetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'client_id' => 'required',
-            'training_sheet' => 'required',
+            'clients' => 'required',
+            'trainingSheet' => 'required',
         ]);
 
-        $training_sheets = new Training_sheet();
+        $training_sheets = new TrainingSheet();
 
-        $training_sheets->client_id = $request->input('client_id');
-        $training_sheets->diet = $request->input('$training_sheet');
+        $training_sheets->client_id = explode(' ',$request->input('clients'))[0];
+        $training_sheets->training_sheet = $request->input('trainingSheet');
 
         $training_sheets->save();
 
@@ -118,8 +121,8 @@ class TrainingSheetController extends Controller
     {
         $training_sheet->delete();
 
-
-        return redirect()->route('trainingSheets.index');
-
+        return redirect()->route('trainingSheets.index')
+            ->with('success', 'Scheda di allenamento eliminata con successo.');
     }
+
 }
