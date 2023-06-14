@@ -24,7 +24,7 @@
                 </button>
             </div>
             <div class="flex items-center justify-center h-24">
-                <p class="text-2xl font-semibold text-xl p-6 ">Schede</p>
+                <p class="text-2xl font-semibold text-xl p-6 ">Schede di allenamento</p>
             </div>
             <div class="flex items-center justify-center h-24">
                 <button class="py-2 px-4 rounded-full hover:bg-red-500">

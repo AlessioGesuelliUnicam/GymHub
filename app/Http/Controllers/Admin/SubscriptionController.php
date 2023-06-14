@@ -78,7 +78,7 @@ class SubscriptionController extends Controller
         $subscription->price = $request->input('price');
         $subscription->save();
 
-        return redirect()->route('subscriptions.index')->with('success', 'Iscrizione aggiornata con successo');
+        return redirect()->route('subscriptions.index');
     }
 
     /**

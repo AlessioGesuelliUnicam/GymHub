@@ -25,10 +25,10 @@
                 <p class="text-2xl font-semibold text-xl p-6 ">Staff</p>
             </div>
             <div class="flex items-center justify-center h-24">
-                <button class="py-2 px-4 rounded-full hover:bg-red-500">
+                <button class="py-2 px-4 rounded-full hover:bg-gray-700">
                     <a href="{{route('staff.create')}}">
                         <svg aria-hidden="true"
-                             class="w-6 h-6 hover:fill-white"
+                             class="w-6 h-6"
                              fill="#f56565" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path clip-rule="evenodd" fill-rule="evenodd"
                                   d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"></path>
@@ -40,7 +40,7 @@
         <div class="flex h-48 mb-4">
             <div class="max-w-full" style="width: 100%">
                 <div class="p-2 relative overflow-x-auto">
-                    <table class="w-full text-center  text-sm font-light shadow-md table-auto rounded-full">
+                    <table class="w-full text-center  text-sm font-light shadow-md table-auto">
                         <thead class="text-xs bg-gray-50 dark:bg-gray-800 uppercase">
                         <tr>
                             <th scope="col" class="hidden w-1/12">ID</th>
