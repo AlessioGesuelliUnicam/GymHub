@@ -54,19 +54,30 @@ class TrainingSheetController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'client_id' => 'required',
-            'training_sheet' => 'required',
-        ]);
 
-        $training_sheets = new Training_sheet();
+        $training_sheets = TrainingSheet::all();
 
-        $training_sheets->client_id = $request->input('client_id');
-        $training_sheets->diet = $request->input('$training_sheet');
+        $data = [
+            "training_sheets" => $training_sheets,
+            "clients" => []
+        ];
 
-        $training_sheets->save();
+        foreach ($training_sheets as $training_sheetsRow) {
+            $clients = DB::table('clients')
+                ->where('id', $training_sheetsRow->client_id)
+                ->select('name', 'surname')
+                ->get();
 
-        return redirect()->route('trainingSheets.index');
+            foreach ($clients as $client) {
+                $data['clients'][] = [
+                    'name' => $client->name,
+                    'surname' => $client->surname,
+                ];
+            }
+        }
+        return view('trainingSheets.d-index.index', compact('data'));
+
+
     }
 
     /**
