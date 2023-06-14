@@ -116,9 +116,8 @@ class ClientSubscriptionController extends Controller
         // Elimina la ClientSubscription dal database
         $clientSubscription->delete();
 
-        // Reindirizza alla pagina index delle clientSubscriptions con un messaggio di successo
-        return redirect()->route('clientSubscriptions.index')
-            ->with('success', 'ClientSubscription eliminata con successo.');
+        // Reindirizza alla pagina index delle clientSubscriptions
+        return redirect()->route('clientSubscriptions.index');
     }
 
 }

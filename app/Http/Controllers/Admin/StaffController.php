@@ -67,7 +67,7 @@ class StaffController extends Controller
 
         $staff->save();
 
-        return redirect()->route('staff.index')->with('Successo', 'Membro dello staff creato con successo');
+        return redirect()->route('staff.index');
     }
 
     /**
@@ -114,7 +114,7 @@ class StaffController extends Controller
 
         $staff->save();
 
-        return redirect()->route('staff.index')->with('Successo', 'Membro dello staff aggiornato con successo');
+        return redirect()->route('staff.index');
     }
 
     /**
@@ -124,6 +124,6 @@ class StaffController extends Controller
     {
         $staff->delete();
 
-        return redirect()->route('staff.index')->with('Successo', 'Membro dello staff eliminato con successo');
+        return redirect()->route('staff.index');
     }
 }

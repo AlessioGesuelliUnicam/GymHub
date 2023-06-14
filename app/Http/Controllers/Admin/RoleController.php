@@ -46,7 +46,7 @@ class RoleController extends Controller
             $roles->type = $request->input('name_roles');
             $roles->save();
 
-            return redirect()->route('roles.index')->with('Successo', 'Ruolo creato con successo');
+            return redirect()->route('roles.index');
         }
     }
 
@@ -81,7 +81,7 @@ class RoleController extends Controller
         $role->type = $request->input('name_roles');
         $role->save();
 
-        return redirect()->route('roles.index')->with('Successo', 'Ruolo salvato con successo');
+        return redirect()->route('roles.index');
     }
 
     /**
