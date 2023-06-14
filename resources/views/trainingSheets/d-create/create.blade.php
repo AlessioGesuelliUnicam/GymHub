@@ -20,7 +20,9 @@
         <label for="title">Cliente:</label><br>
         <input list="clienti" class="form-control" name="clients" placeholder="Cliente">
         <datalist id="clienti">
-
+            @foreach($clients as $client)
+                <option value="{{$client->id.' '.$client->name.' '.$client->surname }}">
+            @endforeach
         </datalist>
     </div>
 

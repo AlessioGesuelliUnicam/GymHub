@@ -18,12 +18,12 @@
 
         <div class="form-group">
             <label for="title">Durata:</label>
-            <input type="text" class="form-control" name="duration" placeholder="Durata in mesi"  value="{{ old('subscription', $subscription->id) }}">
+            <input type="text" class="form-control" name="duration" placeholder="Durata in mesi"  value="{{ old('subscription', $subscription->duration) }}">
         </div>
 
         <div class="form-group">
             <label for="title">Prezzo:</label>
-            <input type="text" class="form-control" name="price" placeholder="Prezzo" value="{{ old('subscription', $subscription->id) }}">
+            <input type="text" class="form-control" name="price" placeholder="Prezzo" value="{{ old('subscription', $subscription->price) }}">
         </div>
 
         <button type="submit" class="btn btn-success">Salva</button>
