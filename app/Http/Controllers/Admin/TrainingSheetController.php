@@ -129,7 +129,6 @@ class TrainingSheetController extends Controller
     {
         $training_sheet->delete();
 
-
         return redirect()->route('trainingSheets.index');
 
     }
