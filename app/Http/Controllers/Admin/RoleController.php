@@ -89,7 +89,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        if (Staff::where($role->id, 'id_role')) {
+        if (Staff::where('id_role', $role->id )->exists()) {
             return redirect()->route('roles.index')->with('Fallimento', 'Ruolo impossibile da eliminare, modificare ruolo dei componenti dello staff');
         } else {
             $role->delete();
