@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Client;
-use App\Models\ClientSubscription;
-use App\Models\Diet;
 use App\Models\TrainingSheet;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -46,7 +43,8 @@ class TrainingSheetController extends Controller
      */
     public function create()
     {
-        return view('trainingSheets.d-create.create');
+        $clients = DB::table('clients')->select('id', 'name', 'surname')->get();
+        return view('trainingSheets.d-create.create', ['clients' => $clients]);
     }
 
     /**
@@ -55,27 +53,19 @@ class TrainingSheetController extends Controller
     public function store(Request $request)
     {
 
-        $training_sheets = TrainingSheet::all();
+        $request->validate([
+            'client_id' => 'required',
+            'training_sheet' => 'required',
+        ]);
 
-        $data = [
-            "training_sheets" => $training_sheets,
-            "clients" => []
-        ];
+        $training_sheets = new TrainingSheet();
 
-        foreach ($training_sheets as $training_sheetsRow) {
-            $clients = DB::table('clients')
-                ->where('id', $training_sheetsRow->client_id)
-                ->select('name', 'surname')
-                ->get();
+        $training_sheets->client_id =  explode(' ',$request->input('client_id'))[0];
+        $training_sheets->training_sheet = $request->input('training_sheet');
 
-            foreach ($clients as $client) {
-                $data['clients'][] = [
-                    'name' => $client->name,
-                    'surname' => $client->surname,
-                ];
-            }
-        }
-        return view('trainingSheets.d-index.index', compact('data'));
+        $training_sheets->save();
+
+        return redirect()->route('trainingSheets.index');
 
 
     }
@@ -93,11 +83,6 @@ class TrainingSheetController extends Controller
      */
     public function edit(TrainingSheet $training_sheet)
     {
-        $data = [
-            'training_sheets' => $training_sheet
-        ];
-
-        return view('trainingSheets.d-edit.edit', $data);
     }
 
     /**
@@ -129,6 +114,7 @@ class TrainingSheetController extends Controller
     {
         $training_sheet->delete();
         return redirect()->route('trainingSheets.index');
+
 
     }
 }

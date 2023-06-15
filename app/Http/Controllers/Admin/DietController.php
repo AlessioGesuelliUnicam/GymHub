@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Client;
-use App\Models\ClientSubscription;
 use App\Models\Diet;
 use App\Http\Controllers\Controller;
-use App\Models\TrainingSheet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,9 +20,10 @@ class DietController extends Controller
             "diets" => $diets,
             "clients" => []
         ];
-        foreach ($diets as $dietRow) {
+
+        foreach ($diets as $diet) {
             $clients = DB::table('clients')
-                ->where('id', $dietRow->client_id)
+                ->where('id', $diet->client_id)
                 ->select('name', 'surname')
                 ->get();
 
@@ -36,7 +34,7 @@ class DietController extends Controller
                 ];
             }
         }
-        return view('diets.d-index.index', $data);
+        return view('diets.d-index.index', compact('data', 'diets'));
     }
 
     /**
