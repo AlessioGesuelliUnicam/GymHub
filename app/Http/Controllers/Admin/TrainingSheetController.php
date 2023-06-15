@@ -128,8 +128,6 @@ class TrainingSheetController extends Controller
     public function destroy(TrainingSheet $training_sheet)
     {
         $training_sheet->delete();
-
-
         return redirect()->route('trainingSheets.index');
 
     }

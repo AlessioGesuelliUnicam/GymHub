@@ -52,14 +52,14 @@
                     <label for="name">Nome:</label>
                     <input type="text"
                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="name" placeholder="Nome" value="{{ old('name', $staff->name) }}">
+                           name="name" autocomplete="off" placeholder="Nome" value="{{ old('name', $staff->name) }}">
                 </div>
                 <div class="form-group mb-6">
                     <label for="surname"
                     >Cognome:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="surname" placeholder="Cognome" value="{{ old('surname', $staff->surname) }}">
+                           name="surname" autocomplete="off" placeholder="Cognome" value="{{ old('surname', $staff->surname) }}">
                 </div>
 
                 <div class="form-group mb-6">
@@ -75,7 +75,7 @@
                     <label for="city_residence">Città:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="city_residence" placeholder="Città"
+                           name="city_residence" autocomplete="off" placeholder="Città"
                            value="{{ old('city_residence', $staff->city_residence) }}">
                 </div>
 
@@ -83,7 +83,7 @@
                     <label for="address_residence">Indirizzo:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="address_residence" placeholder="Indirizzo"
+                           name="address_residence" autocomplete="off" placeholder="Indirizzo"
                            value="{{ old('address_residence', $staff->address_residence) }}">
                 </div>
 
@@ -91,7 +91,7 @@
                     <label for="phone_number">Telefono:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="phone_number" placeholder="Telefono"
+                           name="phone_number" autocomplete="off" placeholder="Telefono"
                            value="{{ old('phone_number', $staff->phone_number) }}">
                 </div>
 
@@ -99,13 +99,13 @@
                     <label for="email">Email:</label>
                     <input type="text"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="email" placeholder="Email" value="{{ old('email', $staff->email) }}">
+                           name="email" autocomplete="off" placeholder="Email" value="{{ old('email', $staff->email) }}">
                 </div>
 
                 <div class="form-group mb-6">
                     <label for="role">Ruolo:</label>
 
-                    <input list="ruoli" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="roles" placeholder="Ruolo" value="{{ old('roles', $staff->roles) }}">
+                    <input list="ruoli" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="roles" placeholder="Ruolo" value="{{ old('roles', $staff->roles) }}">
                     <datalist id="ruoli">
                         @foreach($roles as $role)
                         <option value="{{$role -> type}}">

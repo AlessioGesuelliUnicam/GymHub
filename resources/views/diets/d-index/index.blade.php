@@ -18,7 +18,8 @@
                     <tr>
                         <th scope="col" class="hidden">ID</th>
                         <th scope="col" class="px-6 py-4  text-white">Dieta</th>
-                        <th scope="col" class="px-6 py-4  text-white">Cliente</th>
+                        <th scope="col" class="px-6 py-4  text-white">Nome</th>
+                        <th scope="col" class="px-6 py-4  text-white">Cognome</th>
                         <th scope="col" class="px-6 py-4  text-white">Modifica</th>
                         <th scope="col" class="px-6 py-4  text-white">Elimina</th>
                     </tr>
