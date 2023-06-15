@@ -9,7 +9,7 @@
 @else
 
 <div class="p-4 sm:ml-64">
-    <div class="p-4 rounded-lg dark:border-gray-700">
+    <div class="p-4 rounded-lg dark:border-gray-700 mt-16">
         <div class="grid grid-cols-3 mb-4 text-white bg-gray-800 rounded uppercase">
             <div class="flex items-center justify-center h-24">
                 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
@@ -41,7 +41,7 @@
         <div class="flex h-48 mb-4">
             <div class="max-w-full" style="width: 100%">
                 <div class="p-2 relative overflow-x-auto">
-                    <table class="w-full text-center  text-sm font-light shadow-md table-auto rounded-full">
+                    <table class="w-full text-center  text-sm font-light shadow-md table-auto">
                         <thead class="text-xs bg-gray-50 dark:bg-gray-800 uppercase">
                         <tr>
                             <th scope="col" class="hidden w-1/12">ID</th>

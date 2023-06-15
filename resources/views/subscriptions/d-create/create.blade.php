@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="p-4 sm:ml-64 text-white">
-    <div class="p-4 dark:border-gray-700">
+    <div class="p-4 dark:border-gray-700 mt-16">
         <div class="grid grid-cols-3 mb-4 text-white bg-gray-800 rounded uppercase">
             <div class="flex items-center justify-center h-24">
                 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"

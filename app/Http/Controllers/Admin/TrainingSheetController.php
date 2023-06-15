@@ -97,7 +97,7 @@ class TrainingSheetController extends Controller
             'training_sheets' => $training_sheet
         ];
 
-        return view('training_sheets.d-edit.edit', $data);
+        return view('trainingSheets.d-edit.edit', $data);
     }
 
     /**
