@@ -6,6 +6,8 @@
 <h1 class="text-center">Non ci sono dati.</h1>
 
 @else
+
+
 <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg dark:border-gray-700 mt-16">
         <div class="grid grid-cols-3 mb-4 text-white bg-gray-800 rounded uppercase">

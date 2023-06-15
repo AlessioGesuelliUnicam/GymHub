@@ -46,7 +46,8 @@ class TrainingSheetController extends Controller
      */
     public function create()
     {
-        return view('trainingSheets.d-create.create');
+        $clients = DB::table('clients')->select('id', 'name', 'surname')->get();
+        return view('trainingSheets.d-create.create', ['clients' => $clients]);
     }
 
     /**
@@ -62,9 +63,9 @@ class TrainingSheetController extends Controller
             "clients" => []
         ];
 
-        foreach ($training_sheets as $training_sheetsRow) {
+        foreach ($training_sheets as $training_sheet) {
             $clients = DB::table('clients')
-                ->where('id', $training_sheetsRow->client_id)
+                ->where('id', $training_sheet->client_id)
                 ->select('name', 'surname')
                 ->get();
 
@@ -75,6 +76,7 @@ class TrainingSheetController extends Controller
                 ];
             }
         }
+
         return view('trainingSheets.d-index.index', compact('data'));
 
 
