@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Client;
-use App\Models\ClientSubscription;
 use App\Models\Diet;
 use App\Http\Controllers\Controller;
-use App\Models\TrainingSheet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

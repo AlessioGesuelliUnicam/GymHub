@@ -52,7 +52,7 @@
                 <div class="form-group mb-6 mt-10">
                     <label for="client">Cliente:</label>
 
-                    <input list="clienti" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="clients" placeholder="Cliente">
+                    <input list="clienti" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="client_id" placeholder="Cliente">
                     <datalist id="clienti">
                         @foreach($clients as $client)
                         <option value="{{$client->id.' '.$client->name.' '.$client->surname }}">
@@ -75,7 +75,7 @@
                                     o trascina e lascia</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG, PDF o GIF</p>
                             </div>
-                            <input id="dropzone-file" name="trainingSheet" type="file" class="hidden form-control"/>
+                            <input id="dropzone-file" name="training_sheet" type="file" class="hidden form-control"/>
                         </label>
                     </div>
                 </div>
