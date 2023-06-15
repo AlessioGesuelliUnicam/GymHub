@@ -23,9 +23,10 @@ class DietController extends Controller
             "diets" => $diets,
             "clients" => []
         ];
-        foreach ($diets as $dietRow) {
+
+        foreach ($diets as $diet) {
             $clients = DB::table('clients')
-                ->where('id', $dietRow->client_id)
+                ->where('id', $diet->client_id)
                 ->select('name', 'surname')
                 ->get();
 
@@ -36,7 +37,7 @@ class DietController extends Controller
                 ];
             }
         }
-        return view('diets.d-index.index', $data);
+        return view('diets.d-index.index', compact('data', 'diets'));
     }
 
     /**
