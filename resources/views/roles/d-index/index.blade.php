@@ -66,7 +66,7 @@
                                     @method('DELETE')
 
                                     <input
-                                        class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500"
+                                        class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500 cursor-pointer"
                                         type="submit" value="Elimina">
                                 </form>
                             </td>
