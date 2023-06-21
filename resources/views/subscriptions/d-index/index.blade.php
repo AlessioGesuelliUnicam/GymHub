@@ -53,6 +53,7 @@
                         <thead class="text-xs bg-gray-50 dark:bg-gray-800 uppercase">
                         <tr>
                             <th scope="col" class="hidden w-1/12">ID</th>
+                            <th scope="col" class="px-6 py-4 text-white w-1/12">Nome</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Durata</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Prezzo</th>
                             <th scope="col" class="px-6 py-4 text-white w-1/12">Modifica</th>
@@ -62,6 +63,7 @@
                         <tbody>
                         @foreach($subscriptions as $subscription)
                         <tr class="bg-white border-b">
+                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$subscription -> name}}</td>
                             <td class="whitespace-nowrap   px-6 py-4 hidden w-1/12">{{$subscription -> id}}</td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">
                                 @if($subscription->duration > 1)

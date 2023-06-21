@@ -51,9 +51,9 @@
                                 <thead class="text-xs bg-gray-50 dark:bg-gray-800 uppercase">
                                 <tr>
                                     <th scope="col" class="hidden">ID</th>
-                                    <th scope="col" class="px-6 py-4 text-white w-1/12">Dieta</th>
                                     <th scope="col" class="px-6 py-4 text-white w-1/12">Nome</th>
                                     <th scope="col" class="px-6 py-4 text-white w-1/12">Cognome</th>
+                                    <th scope="col" class="px-6 py-4 text-white w-1/12">Dieta</th>
                                     <th scope="col" class="px-6 py-4 text-white w-1/12">Elimina</th>
                                 </tr>
                                 </thead>
@@ -61,11 +61,10 @@
                                 <tbody>
                                 @foreach($data['clients'] as $key => $client)
                                     <tr class="bg-white border-b">
-                                        <td class="whitespace-nowrap  px-6 py-4 w-1/12"
-                                            style="display: none">{{$data['diets'][$key]->id}}</td>
+                                        <td class="whitespace-nowrap  px-6 py-4 w-1/12 hidden">{{$data['diets'][$key]->id}}</td>
+                                        <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client['name']}}</td>
+                                        <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client['surname']}}</td>
                                         <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$data['diets'][$key]->diet}}</td>
-                                        <th class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client['name']}}</th>
-                                        <th class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client['surname']}}</th>
                                         <th>
                                             <form method='POST'
                                                   action="{{ route('diets.destroy', $data['diets'][$key]->id) }}">
@@ -74,7 +73,7 @@
 
                                                 <input
                                                     class="bg-gray-800 text-white py-2 px-4 rounded-full right-0 hover:bg-red-500 cursor-pointer"
-                                                    type="submit" value="Elimina" >
+                                                    type="submit" value="Elimina">
                                             </form>
                                         </th>
 

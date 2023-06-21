@@ -38,6 +38,12 @@
                 @endif
 
                 <div class="form-group mb-6 mt-10">
+                    <label for="duration">Nome:</label>
+                    <input type="text"
+                           class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           name="name" autocomplete="off" placeholder="Nome" value="{{ old('name', $subscription->name) }}">
+                </div>
+                <div class="form-group mb-6">
                     <label for="duration">Durata:</label>
                     <input type="text"
                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

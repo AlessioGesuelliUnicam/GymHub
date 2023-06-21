@@ -35,12 +35,15 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'duration' => 'required',
             'price' => 'required'
+
         ]);
 
         $subscription = new Subscription();
 
+        $subscription->name = $request->input('name');
         $subscription->duration = $request->input('duration');
         $subscription->price = $request->input('price');
 
@@ -70,10 +73,12 @@ class SubscriptionController extends Controller
     public function update(Request $request, Subscription $subscription)
     {
         $request->validate([
+            'name' => 'required',
             'duration' => 'required',
             'price' => 'required'
         ]);
 
+        $subscription->name = $request->input('name');
         $subscription->duration = $request->input('duration');
         $subscription->price = $request->input('price');
         $subscription->save();
