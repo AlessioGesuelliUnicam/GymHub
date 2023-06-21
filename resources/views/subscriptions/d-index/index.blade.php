@@ -76,7 +76,8 @@
                                    href="{{ route('subscriptions.edit' , ['subscription' => $subscription->id]) }}">Modifica</a>
                             </td>
                             <td>
-                                <form method='POST' action="{{ route('subscriptions.destroy', ['subscription' => $subscription->id]) }}">
+                                <form method='POST'
+                                      action="{{ route('subscriptions.destroy', ['subscription' => $subscription->id]) }}">
                                     @csrf
                                     @method('DELETE')
 
