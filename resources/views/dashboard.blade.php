@@ -4,10 +4,29 @@ use App\Models\Client;
 use App\Models\ClientSubscription;
 use App\Models\Staff;
 
-
 $clientCount = Client::count();
 $subscriptionCount = ClientSubscription::count();
 $staffCount = Staff::count();
+$clienti = ClientSubscription::select('start_subscription')->get();
+$arrayMesi = [];
+
+foreach ($clienti as $cliente) {
+    $mese = date("m", strtotime($cliente['start_subscription']));
+    $anno = date("Y", strtotime($cliente['start_subscription']));
+    $arrayMesi[] = $mese . '-' . $anno;
+}
+
+$mesiAnno = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
+$abbonamentiEffettuatiPerMese = array_fill(0, 12, 0);
+
+foreach ($arrayMesi as $meseAnno) {
+    list($mese, $anno) = explode('-', $meseAnno);
+    if ($anno == date("Y")) {
+        $index = (int)$mese - 1;
+        $abbonamentiEffettuatiPerMese[$index]++;
+    }
+}
+
 ?>
 @extends('layouts.app')
 @section('content')
@@ -28,40 +47,40 @@ $staffCount = Staff::count();
                     <p class="text-sm text-white uppercase py-8 pl-8">Personale attivo</p>
                 </div>
             </div>
-            <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                </div>
-                <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                </div>
-                <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                </div>
-                <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                </div>
-            </div>
-            <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                </div>
-                <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                </div>
-                <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                </div>
-                <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                </div>
+            <div class="flex items-center justify-center h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+                <canvas id="myChart"></canvas>
+
+                <script>
+                    var mesiAnno = <?php echo json_encode($mesiAnno); ?>;
+                    var abbonamentiEffettuati = <?php echo json_encode($abbonamentiEffettuatiPerMese); ?>;
+
+                    var ctx = document.getElementById('myChart').getContext('2d');
+
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: mesiAnno,
+                            datasets: [{
+                                label: 'Abbonamenti effettuati',
+                                data: abbonamentiEffettuati,
+                                backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                                borderColor: 'rgba(0, 123, 255, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    precision: 0
+                                }
+                            }
+                        }
+                    });
+                </script>
             </div>
         </div>
     </div>
 @endsection('content')
+
+
