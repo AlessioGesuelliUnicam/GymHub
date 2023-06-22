@@ -34,19 +34,25 @@ foreach ($arrayMesi as $meseAnno) {
     <div class="p-4 sm:ml-64">
         <div class="mt-16 p-4 rounded-lg dark:border-gray-700">
             <div class="grid grid-cols-3 gap-4 mb-4">
-                <div class=" items-start justify-start h-48 rounded bg-gray-50 dark:bg-red-800">
-                    <p class="text-7xl text-white pt-10 pl-10 ">{{$clientCount}}</p>
-                    <p class="text-sm text-white uppercase py-8 pl-8">Clienti totali</p>
-                </div>
-                <div class=" items-center justify-center h-48 rounded bg-gray-50 dark:bg-gray-800">
-                    <p class="text-7xl text-white pt-10 pl-10 ">{{$subscriptionCount}}</p>
-                    <p class="text-sm text-white uppercase py-8 pl-8">Abbonamenti totali</p>
-                </div>
-                <div class=" items-center justify-center h-48 rounded bg-gray-50 dark:bg-yellow-800">
-                    <p class="text-7xl text-white pt-10 pl-10 ">{{$staffCount}}</p>
-                    <p class="text-sm text-white uppercase py-8 pl-8">Personale attivo</p>
-                </div>
+                <a href="{{ route('clients.index') }}">
+                    <div class="items-start justify-start h-48 rounded bg-gray-50 dark:bg-gray-800">
+                        <p class="text-7xl text-white pt-10 pl-10">{{ $clientCount }}</p>
+                        <p class="text-sm text-white uppercase py-8 pl-8">Clienti totali</p>
+                    </div>
+                </a>
+                <a href="{{ route('clientSubscriptions.index') }}">
+                    <div class=" items-center justify-center h-48 rounded bg-gray-50 dark:bg-red-600">
+                        <p class="text-7xl text-white pt-10 pl-10 ">{{$subscriptionCount}}</p>
+                        <p class="text-sm text-white uppercase py-8 pl-8">Abbonamenti totali</p>
+                    </div>
+                </a>
+                <a href="{{ route('staff.index') }}">
+                    <div class=" items-center justify-center h-48 rounded bg-gray-50 dark:bg-gray-800">
+                        <p class="text-7xl text-white pt-10 pl-10 ">{{$staffCount}}</p>
+                        <p class="text-sm text-white uppercase py-8 pl-8">Personale attivo</p>
+                    </div>
             </div>
+            </a>
             <div class="flex items-center justify-center h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
                 <canvas id="myChart"></canvas>
 
@@ -61,18 +67,32 @@ foreach ($arrayMesi as $meseAnno) {
                         data: {
                             labels: mesiAnno,
                             datasets: [{
-                                label: 'Abbonamenti effettuati',
+                                label: 'Abbonamenti effettuati per mese',
                                 data: abbonamentiEffettuati,
-                                backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                                borderColor: 'rgba(0, 123, 255, 1)',
+                                backgroundColor: 'rgba(245, 101, 101, 0.5)',
+                                borderColor: 'rgba(245, 101, 101, 1)',
                                 borderWidth: 1
                             }]
                         },
                         options: {
                             scales: {
+                                x: {
+                                    ticks: {
+                                        color: 'white'
+                                    }
+                                },
                                 y: {
+
                                     beginAtZero: true,
-                                    precision: 0
+                                    ticks: {
+                                        precision: 0,
+                                        color: 'white',
+                                        callback: function (value, index, values) {
+                                            if (Math.floor(value) === value) {
+                                                return value;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

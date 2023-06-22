@@ -60,19 +60,20 @@ class ClientSubscriptionController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'cliente' => 'required'
+            'cliente' => 'required',
+           'subscription' => 'required'
 
         ]);
-
+        $durata = Subscription::where('name','=',$request->input('subscription'))->value('duration');
         $date = date_create($request->input('start_date'));
-        date_modify($date, '+'.$request->input('subscription').' month');  // Somma un mese
+        date_modify($date, '+'.$durata.' month');  // Somma mese
 
         $newDate = date_format($date, 'Y-m-d');
 
         $clientSubscription = new ClientSubscription();
 
         $clientSubscription->client_id = explode(' ',$request->input('cliente'))[0];
-        $clientSubscription->subscription_id = Subscription::where('duration','=',$request->input('subscription'))->value('id');
+        $clientSubscription->subscription_id = Subscription::where('name','=',$request->input('subscription'))->value('id');
         $clientSubscription->start_subscription = $request->input('start_date');
         $clientSubscription->end_subscription = $newDate;
         $clientSubscription->save();
