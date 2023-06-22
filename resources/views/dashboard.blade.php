@@ -35,20 +35,20 @@ foreach ($arrayMesi as $meseAnno) {
         <div class="mt-16 p-4 rounded-lg dark:border-gray-700">
             <div class="grid grid-cols-3 gap-4 mb-4">
                 <a href="{{ route('clients.index') }}">
-                    <div class="items-start justify-start h-48 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-7xl text-white pt-10 pl-10">{{ $clientCount }}</p>
+                    <div class="items-start justify-start h-48 rounded bg-gray-50 bg-gray-800">
+                        <p class="text-7xl text-white pt-10 pl-10 text-red-400">{{ $clientCount }}</p>
                         <p class="text-sm text-white uppercase py-8 pl-8">Clienti totali</p>
                     </div>
                 </a>
                 <a href="{{ route('clientSubscriptions.index') }}">
-                    <div class=" items-center justify-center h-48 rounded bg-gray-50 dark:bg-red-600">
-                        <p class="text-7xl text-white pt-10 pl-10 ">{{$subscriptionCount}}</p>
+                    <div class=" items-center justify-center h-48 rounded bg-gray-50 bg-gray-800">
+                        <p class="text-7xl text-white pt-10 pl-10 text-red-400">{{$subscriptionCount}}</p>
                         <p class="text-sm text-white uppercase py-8 pl-8">Abbonamenti totali</p>
                     </div>
                 </a>
                 <a href="{{ route('staff.index') }}">
-                    <div class=" items-center justify-center h-48 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-7xl text-white pt-10 pl-10 ">{{$staffCount}}</p>
+                    <div class=" items-center justify-center h-48 rounded bg-gray-50 bg-gray-800">
+                        <p class="text-7xl text-white pt-10 pl-10 text-red-400">{{$staffCount}}</p>
                         <p class="text-sm text-white uppercase py-8 pl-8">Personale attivo</p>
                     </div>
             </div>
