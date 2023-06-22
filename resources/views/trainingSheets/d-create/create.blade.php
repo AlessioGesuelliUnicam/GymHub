@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form- mb-6">
-                    <label for="trainingSheet">Scheda di allenamento:</label>
+                    <label for="training_sheet">Scheda di allenamento:</label>
                     <div class="flex items-center justify-center w-full">
                         <label for="dropzone-file"
                                class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -65,7 +65,8 @@
                                     o trascina e lascia</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG, PDF o GIF</p>
                             </div>
-                            <input id="dropzone-file" name="training_sheet" type="file" class="hidden form-control"/>
+                            <input id="dropzone-file" name="med_cert" type="file" class="hidden form-control"
+                                   value="{{ old('training_sheet')}}"/>
                         </label>
                     </div>
                 </div>
