@@ -65,11 +65,12 @@
                             </td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client['name']}}</td>
                             <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client['surname']}}</td>
-                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{
-                                $data['clientSubscriptions'][$key]->start_subscription }}
+                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">
+                                {{ \Carbon\Carbon::parse($data['clientSubscriptions'][$key]->start_subscription)->format('d-m-Y')}}
                             </td>
-                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{
-                                $data['clientSubscriptions'][$key]->end_subscription }}
+                            <td class="whitespace-nowrap  px-6 py-4 w-1/12">
+                                {{ \Carbon\Carbon::parse($data['clientSubscriptions'][$key]->end_subscription )->format('d-m-Y')}}
+
                             </td>
                             <td>
                                 <form method='POST'
