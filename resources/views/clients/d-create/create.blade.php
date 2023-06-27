@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="flex justify-center h-full rounded bg-gray-50 dark:bg-gray-800">
-            <form method="POST" action="{{route('clients.store')}}">
+            <form method="POST" action="{{route('clients.store')}}" enctype="multipart/form-data">
 
                 @csrf
                 @method('POST')

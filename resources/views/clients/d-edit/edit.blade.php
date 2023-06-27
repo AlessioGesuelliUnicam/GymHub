@@ -94,9 +94,21 @@
 
                 <div class="form-group mb-6">
                     <label for="med_cert">Certificato medico:</label>
-                    <input type="file" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           name="med_cert" value="{{ old('med_cert') }}">
+                    @if ($client->med_cert)
+                        @php
+                            $url = asset('storage/' . $client->med_cert);
+                        @endphp
+                        <p>File attuale: <a href="{{ $url }}" target="_blank">{{ basename($client->med_cert) }}</a></p>
+                        <input type="file" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               name="med_cert" value="{{ old('med_cert') }}">
+                    @else
+                        <input type="file" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               name="med_cert" value="{{ old('med_cert') }}">
+                    @endif
                 </div>
+
+
+
 
                 <div class="form-group mb-6">
                     <label for="med_cert_exp">Data di
@@ -116,8 +128,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="CF">Codice
-                        fiscale:</label>
+                    <label for="CF">Codice fiscale:</label>
                     <input type="text"
                            class="mb-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            name="CF" placeholder="Codice fiscale" value="{{ old('CF', $client->CF) }}">

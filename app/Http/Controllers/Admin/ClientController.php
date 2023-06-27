@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class  ClientController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,8 @@ class  ClientController extends Controller
         $clients = Client::all();
 
         $data = [
-            "clients" => $clients];
+            "clients" => $clients
+        ];
 
         return view('clients.d-index.index', $data);
     }
@@ -40,7 +41,7 @@ class  ClientController extends Controller
             'name' => 'required|max:20',
             'surname' => 'required|max:30',
             'phone_number' => 'required|max:11',
-            'CF' => 'required|max:16'
+            'CF' => 'required|max:16',
         ]);
 
         $client = new Client();
@@ -52,7 +53,16 @@ class  ClientController extends Controller
         $client->address_residence = $request->input('address_residence');
         $client->phone_number = $request->input('phone_number');
         $client->email = $request->input('email');
-        $client->med_cert = $request->input('med_cert');
+
+        if ($request->hasFile('med_cert')) {
+            $file = $request->file('med_cert');
+            $fileName = $client->name . '_' . $client->surname . '_' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension();
+            $filePath = 'file/med_cert/' . $fileName;
+            $file->storeAs('public', $filePath);
+
+            $client->med_cert = $filePath;
+        }
+
         $client->med_cert_exp = $request->input('med_cert_exp');
         $client->free_entry = $request->input('free_entry');
         $client->CF = $request->input('CF');
@@ -101,7 +111,16 @@ class  ClientController extends Controller
         $client->address_residence = $request->input('address_residence');
         $client->phone_number = $request->input('phone_number');
         $client->email = $request->input('email');
-        $client->med_cert = $request->input('med_cert');
+
+        if ($request->hasFile('med_cert')) {
+            $file = $request->file('med_cert');
+            $fileName = $client->name . '_' . $client->surname . '_' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension();
+            $filePath = 'file/med_cert/' . $fileName;
+            $file->storeAs('public', $filePath);
+
+            $client->med_cert = $filePath;
+        }
+
         $client->med_cert_exp = $request->input('med_cert_exp');
         $client->free_entry = $request->input('free_entry');
         $client->CF = $request->input('CF');
@@ -120,7 +139,6 @@ class  ClientController extends Controller
         DB::table('diets')->where('client_id', $client->id)->delete();
         DB::table('training_sheets')->where('client_id', $client->id)->delete();
         $client->delete();
-
 
         return redirect()->route('clients.index');
     }
