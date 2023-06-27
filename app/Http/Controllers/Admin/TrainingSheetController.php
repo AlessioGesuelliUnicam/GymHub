@@ -6,6 +6,7 @@ use App\Models\TrainingSheet;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class TrainingSheetController extends Controller
 {
@@ -55,13 +56,21 @@ class TrainingSheetController extends Controller
 
         $request->validate([
             'client_id' => 'required',
-            'training_sheet' => 'required',
+            'training_sheet' => 'required|file',
         ]);
 
         $training_sheets = new TrainingSheet();
+        $clientInfo = explode(' ', $request->input('client_id'));
+        $training_sheets->client_id = $clientInfo[0];
+        $clientName = Str::slug($clientInfo[1].'_'.$clientInfo[2]); // Genera un nome univoco basato sul nome e cognome del cliente
 
-        $training_sheets->client_id =  explode(' ',$request->input('client_id'))[0];
-        $training_sheets->training_sheet = $request->input('training_sheet');
+        if ($request->hasFile('training_sheet')) {
+            $file = $request->file('training_sheet');
+            $extension = $file->getClientOriginalExtension(); // Estensione del file originale
+            $fileName = $clientName.'_'.date('Ymd_His').'.'.$extension; // Genera il nome del file univoco con data/ora
+            $path = $file->storeAs('file/schede', $fileName, 'public'); // Salva il file rinominato nella directory 'public/file/schede'
+            $training_sheets->training_sheet = $path;
+        }
 
         $training_sheets->save();
 

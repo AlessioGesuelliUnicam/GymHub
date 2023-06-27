@@ -64,7 +64,12 @@
                                         <td class="whitespace-nowrap  px-6 py-4 w-1/12 hidden">{{$data['diets'][$key]->id}}</td>
                                         <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client['name']}}</td>
                                         <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$client['surname']}}</td>
-                                        <td class="whitespace-nowrap  px-6 py-4 w-1/12">{{$data['diets'][$key]->diet}}</td>
+                                        <td class="whitespace-nowrap  px-6 py-4 w-1/12">
+                                            @if ($data['diets'][$key]->diet)
+                                                <a href="{{ asset('storage/' . $data['diets'][$key]->diet) }}" target="_blank"
+                                                   class="text-black-500 hover:font-bold hover:text-blue-700">Apri file</a>
+                                            @endif
+                                        </td>
                                         <th>
                                             <form method='POST'
                                                   action="{{ route('diets.destroy', $data['diets'][$key]->id) }}">
@@ -76,9 +81,7 @@
                                                     type="submit" value="Elimina">
                                             </form>
                                         </th>
-
                                     </tr>
-
                                 @endforeach
                                 </tbody>
                             </table>

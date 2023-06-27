@@ -6,6 +6,8 @@ use App\Models\Diet;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class DietController extends Controller
 {
@@ -57,13 +59,21 @@ class DietController extends Controller
     {
         $request->validate([
             'client_id' => 'required',
-            'diet' => 'required',
+            'diet' => 'required|file',
         ]);
 
         $diets = new Diet();
+        $clientInfo = explode(' ', $request->input('client_id'));
+        $diets->client_id = $clientInfo[0];
+        $clientName = Str::slug($clientInfo[1].'_'.$clientInfo[2]); // Genera un nome univoco basato sul nome e cognome del cliente
 
-        $diets->client_id =  explode(' ',$request->input('client_id'))[0];
-        $diets->diet = $request->input('diet');
+        if ($request->hasFile('diet')) {
+            $file = $request->file('diet');
+            $extension = $file->getClientOriginalExtension(); // Estensione del file originale
+            $fileName = $clientName.'_'.date('Ymd_His').'.'.$extension; // Genera il nome del file univoco con data/ora
+            $path = $file->storeAs('file/diete', $fileName, 'public'); // Salva il file rinominato nella directory 'public/file/diete'
+            $diets->diet = $path;
+        }
 
         $diets->save();
 
@@ -82,42 +92,14 @@ class DietController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Diet $diet)
-    {
-        $clients = DB::table('clients')
-            ->select('id', 'name', 'surname')
-            ->get();
-
-        $data = [
-            "diet" => $diet,
-            "clients" => $clients
-        ];
-
-        return view('diets.d-edit.edit', $data);
-    }
+    {}
 
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Diet $diet)
-    {
-
-        var_dump($request->input('client_id'));
-
-        $request->validate([
-
-            'client_id' => 'required',
-            'diet' => 'required',
-
-        ]);
-
-        $diet->client_id = $request->input('client_id');
-        $diet->diet = $request->input('diet');
-
-        $diet->save();
-
-        return redirect()->route('diets.index');
-    }
+    {}
 
     /**
      * Remove the specified resource from storage.
